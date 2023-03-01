@@ -1,8 +1,8 @@
 {
+  "homepage": "http://miguelrguez16.github.io/mi-marcador-padel",
   "name": "mi-marcador",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://miguelrguez16.github.io/mi-marcador-padel",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
