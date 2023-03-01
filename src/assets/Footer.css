@@ -1,0 +1,35 @@
+.container-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    gap: 10px;
+}
+
+
+.parte-ateam {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.parte-central {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.parte-bteam {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.scale-effect:hover {
+    transform: scale(1.2);
+}

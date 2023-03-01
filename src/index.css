@@ -1,0 +1,26 @@
+body {
+  padding: 0;
+  /* background-color: #212121; */
+  background: linear-gradient(90deg, #0A2751 0%, #2B7335 100%);
+  color: white;
+  margin: 20px;
+  font-size: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 440px;
+}
+
+span {
+  font-size: 1.4em;
+}
+
+.ateam,
+.point-team-a,
+.name-team-a {
+  color: darkturquoise;
+}
+
+.bteam,
+.point-team-b,
+.name-team-b {
+  color: rgb(21, 245, 62);
+}
