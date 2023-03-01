@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mi-marcador-padel/static/css/main.bf423e25.css",
+    "main.js": "/mi-marcador-padel/static/js/main.13f86c98.js",
+    "index.html": "/mi-marcador-padel/index.html",
+    "main.bf423e25.css.map": "/mi-marcador-padel/static/css/main.bf423e25.css.map",
+    "main.13f86c98.js.map": "/mi-marcador-padel/static/js/main.13f86c98.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf423e25.css",
+    "static/js/main.13f86c98.js"
+  ]
+}
