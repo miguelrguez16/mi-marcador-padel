@@ -17,6 +17,9 @@ class Match {
     this.handleBallPossessionFromMatch(this.ballPossession);
     return this.ballPossession;
   }
+  setBallPossession(ballPossession: boolean): void {
+    this.ballPossession = ballPossession;
+  }
 
   incrementCurrentSet(): number {
     console.log(`increment current set ${this.currentSet++}`);

@@ -27,7 +27,7 @@ function App() {
   const handleBallPossessionFromMatch = (e: boolean) => {
     setBallPossession(e);
   };
-
+  // eslint-disable-next-line
   let [match, setMatch] = useState(new Match(handleBallPossessionFromMatch));
 
   const handleStart = useCallback(() => {
@@ -51,7 +51,7 @@ function App() {
     setPointsTeamA(0);
     setPointsTeamB(0);
     match.clear();
-  }, []);
+  }, [match]);
 
   const handleBallPossession = useCallback(() => {
     setBallPossession((possession) => !possession);
@@ -68,6 +68,7 @@ function App() {
       setPointsTeamB(0);
     }
   };
+
   const incrementPointsBTeam = () => {
     let currentPointB: number = pointsTeamB;
     if (currentPointB < 3) {
@@ -78,12 +79,14 @@ function App() {
       setPointsTeamB(0);
     }
   };
+
   const decrementsPointsATeam = () => {
     let currentPointA: number = pointsTeamA;
     if (currentPointA > 0) {
       setPointsTeamA(currentPointA - 1);
     }
   };
+
   const decrementsPointsBTeam = () => {
     let currentPointB: number = pointsTeamB;
     if (currentPointB > 0) {
@@ -92,6 +95,7 @@ function App() {
   };
 
   useEffect(() => {
+    match.setBallPossession(ballPossession);
     if (isActive && !isPaused) {
       interval.current = window.setInterval(() => {
         setTiempo((t) => t + 10);
@@ -105,7 +109,8 @@ function App() {
   }, [
     isActive,
     isPaused,
-    ballPossession
+    ballPossession,
+    match
   ]);
 
   return (
