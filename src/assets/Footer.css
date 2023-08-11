@@ -9,7 +9,6 @@
     gap: 10px;
 }
 
-
 .parte-ateam {
     width: 33%;
     display: flex;
@@ -32,4 +31,5 @@
 
 .scale-effect:hover {
     transform: scale(1.2);
+    cursor: pointer;
 }

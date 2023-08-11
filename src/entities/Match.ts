@@ -1,3 +1,4 @@
+import { LAST_SET } from "../utils";
 import Sets from "./Sets";
 class Match {
   setOne: Sets = new Sets();
@@ -5,24 +6,44 @@ class Match {
   setThree: Sets = new Sets();
   currentSet: number = 0;
   ballPossession: boolean = true;
+  finish: boolean = false;
 
-  private handleBallPossessionFromMatch: (e: boolean) => void;
+  private handleBallPossession: (e: boolean) => void;
+  private handleMatchFinished!: (e: boolean) => void;
 
-  constructor(handleBallPossessionFromMatch: (e: boolean) => void) {
-    this.handleBallPossessionFromMatch = handleBallPossessionFromMatch;
+  constructor(
+    handleBallPossessionFromMatch: (e: boolean) => void,
+    handleMatchFinished: (e: boolean) => void
+  ) {
+    this.handleBallPossession = handleBallPossessionFromMatch;
+    this.handleMatchFinished = handleMatchFinished;
   }
 
+  // FINISH
+  setFinish(e: boolean): boolean {
+    this.finish = e;
+    this.handleMatchFinished(e);
+    return this.finish;
+  }
+
+  isFinishMatch(): boolean {
+    return this.currentSet >= LAST_SET ? this.setFinish(true) : false;
+  }
+
+  // BALL POSSESSION
   changeBallPossession(): boolean {
     this.ballPossession = !this.ballPossession.valueOf();
-    this.handleBallPossessionFromMatch(this.ballPossession);
+    this.handleBallPossession(this.ballPossession);
     return this.ballPossession;
   }
   setBallPossession(ballPossession: boolean): void {
     this.ballPossession = ballPossession;
   }
 
+  // MANAGE SETS
   incrementCurrentSet(): number {
     console.log(`increment current set ${this.currentSet++}`);
+    this.isFinishMatch();
     return this.currentSet;
   }
 
@@ -47,6 +68,7 @@ class Match {
         break;
     }
     console.log(this.toString());
+
     return endSet ? this.incrementCurrentSet() : this.currentSet;
   };
 
@@ -68,12 +90,14 @@ class Match {
     return valueToReturn;
   };
 
+  // RESET ALL
   clear(): void {
     this.setOne.clear();
     this.setTwo.clear();
     this.setThree.clear();
     this.currentSet = 0;
     this.ballPossession = true;
+    this.finish = false;
   }
 
   toString(): string {

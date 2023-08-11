@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .title-sets {
@@ -17,8 +17,7 @@
     flex-direction: column;
 }
 
-.team-one-sets,
-.team-two-sets {
+.team-sets {
     display: flex;
     flex-direction: row;
     gap: 20px;

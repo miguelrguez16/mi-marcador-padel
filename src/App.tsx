@@ -1,13 +1,13 @@
 import "./App.css";
 import Sets from "./Components/Scoreboard";
 import Time from "./Components/Time";
-import Footer from "./Components/footer";
+import Footer from "./Components/Footer";
 import Points from "./Components/Points";
+import End from "./Components/End";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 
 import Match from "./entities/Match";
-
 
 function App() {
   // TIMER VALUES
@@ -24,11 +24,18 @@ function App() {
 
   // BALL POSSESSION
   let [ballPossession, setBallPossession] = useState(true);
-  const handleBallPossessionFromMatch = (e: boolean) => {
+  const handleBallPossessionOnMatch = (e: boolean) => {
     setBallPossession(e);
   };
-  // eslint-disable-next-line
-  let [match, setMatch] = useState(new Match(handleBallPossessionFromMatch));
+
+  const [finish, setFinish] = useState(false);
+  const handleMatchFinished = (e: boolean) => {
+    setFinish(e);
+  };
+
+  const [match, setMatch] = useState(
+    new Match(handleBallPossessionOnMatch, handleMatchFinished)
+  );
 
   const handleStart = useCallback(() => {
     setIsActive(true);
@@ -46,11 +53,12 @@ function App() {
   }, []);
 
   const handleReset = useCallback(() => {
+    match.clear();
     setIsActive(false);
+    setFinish(false);
     setTiempo(0);
     setPointsTeamA(0);
     setPointsTeamB(0);
-    match.clear();
   }, [match]);
 
   const handleBallPossession = useCallback(() => {
@@ -96,6 +104,7 @@ function App() {
 
   useEffect(() => {
     match.setBallPossession(ballPossession);
+
     if (isActive && !isPaused) {
       interval.current = window.setInterval(() => {
         setTiempo((t) => t + 10);
@@ -110,12 +119,17 @@ function App() {
     isActive,
     isPaused,
     ballPossession,
-    match
+    match,
+    finish,
+    match.setOne,
+    match.setTwo,
+    match.setThree,
   ]);
 
   return (
     <div className="App">
       <div className="main-layout">
+        <End show={finish} handleReset={handleReset} />
         <Sets
           setOne={match.setOne}
           setTwo={match.setTwo}
@@ -126,19 +140,19 @@ function App() {
           pointsTeamB={pointsTeamB}
           incrementPointsATeam={incrementPointsATeam}
           incrementPointsBTeam={incrementPointsBTeam}
-          ballA={ballPossession}
+          ballPossession={ballPossession}
           changeBallPossession={handleBallPossession}
         />
-        <Time timer={tiempo} />
+        <Time timer={tiempo} show={finish} />
       </div>
       <div className="footer-layout">
         <Footer
           active={isActive}
           isPaused={isPaused}
+          handleReset={handleReset}
           handleStart={handleStart}
           handleResumen={handleResumen}
           handlePause={handlePause}
-          handleReset={handleReset}
           incrementPointsATeam={incrementPointsATeam}
           incrementPointsBTeam={incrementPointsBTeam}
           decrementsPointsATeam={decrementsPointsATeam}
