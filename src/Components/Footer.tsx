@@ -7,16 +7,16 @@ import { BsPlusLg } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 
 interface Props {
-  handleStart: any;
-  handleReset: any;
-  handlePause: any;
-  handleResumen: any;
-  decrementsPointsATeam: any;
-  incrementPointsATeam: any;
-  decrementsPointsBTeam: any;
-  incrementPointsBTeam: any;
   isPaused: boolean;
   active: boolean;
+  handleStart: () => void;
+  handleReset: () => void;
+  handlePause: () => void;
+  handleResumen: () => void;
+  decrementsPointsATeam: () => void;
+  incrementPointsATeam: () => void;
+  decrementsPointsBTeam: () => void;
+  incrementPointsBTeam: () => void;
 }
 
 const Footer = ({

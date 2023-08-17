@@ -5,7 +5,7 @@ import { END_MATCH } from "../utils";
 
 interface Props {
   show: boolean;
-  handleReset: any;
+  handleReset: () => void;
 }
 
 const End = ({ show, handleReset }: Props) => {

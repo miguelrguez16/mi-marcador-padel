@@ -7,10 +7,10 @@ import { BiTennisBall } from "react-icons/bi";
 interface Props {
   pointsTeamA: number;
   pointsTeamB: number;
-  incrementPointsATeam: any;
-  incrementPointsBTeam: any;
   ballPossession: boolean;
-  changeBallPossession: any;
+  incrementPointsATeam: () => void;
+  incrementPointsBTeam: () => void;
+  changeBallPossession: () => void;
 }
 
 const Points = ({
