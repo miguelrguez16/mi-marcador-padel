@@ -33,7 +33,7 @@ function App() {
     setFinish(e);
   };
 
-  const [match, setMatch] = useState(
+  const [match] = useState(
     new Match(handleBallPossessionOnMatch, handleMatchFinished)
   );
 
