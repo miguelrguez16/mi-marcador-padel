@@ -5,7 +5,7 @@ permissions:
  pages: write
  id-token: write
 jobs:
-  build-and-deploy:
+  build:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
@@ -16,6 +16,16 @@ jobs:
         run: |
           yarn install
           yarn build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: /build
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy 🚀
         uses: actions/deploy-pages@v2
+        with:
+          token: ${{github.token}}
