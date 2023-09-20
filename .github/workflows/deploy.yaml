@@ -27,10 +27,12 @@ jobs:
 
   deploy:
     needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "_site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
       - name: Deploy 🚀
-        uses: actions/deploy-pages@v2
+        uses: actions/upload-pages-artifact@v2
