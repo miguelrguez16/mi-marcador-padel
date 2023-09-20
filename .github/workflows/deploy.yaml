@@ -5,8 +5,7 @@ on:
       - main
 
 permissions:
- pages: write
- id-token: write
+  contents : write
 jobs:
   build:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
@@ -29,10 +28,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Fix permissions
-        run: |
-          chmod -c -R +rX "_site/" | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
+      - uses: actions/download-artifact@v3
+        with: github-pages
+
       - name: Deploy 🚀
-        uses: actions/upload-pages-artifact@v2
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: github-pages
