@@ -1,8 +1,5 @@
 name: GitHub Actions Deploy app to github pages
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 permissions:
   contents : write
@@ -32,6 +29,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: github-pages
+      - name: ls
+        run: ls -R ./
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
