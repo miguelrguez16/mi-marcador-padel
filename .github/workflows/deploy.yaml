@@ -30,7 +30,8 @@ jobs:
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
-        with: github-pages
+        with:
+          name: github-pages
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
