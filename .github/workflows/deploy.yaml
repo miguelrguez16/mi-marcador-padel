@@ -23,6 +23,7 @@ jobs:
           path: /build
 
   deploy:
+    needed: build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy 🚀
