@@ -29,9 +29,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: github-pages
-          path: git-pages
-      - name: ls
-        run: ls -R ./
+          path: github-pages
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
