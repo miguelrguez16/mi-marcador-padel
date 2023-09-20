@@ -1,14 +1,11 @@
 name: GitHub Actions Deploy app to github pages
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 permissions:
-  contents: write
-
+ pages: write
+ id-token: write
 jobs:
-  build-and-deploy:
+  build:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
@@ -19,8 +16,18 @@ jobs:
         run: |
           yarn install
           yarn build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
-          folder: build
+          name: github-pages
+          path: ./build
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy 🚀
+        uses: actions/deploy-pages@v2
