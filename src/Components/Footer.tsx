@@ -6,9 +6,7 @@ import { AiOutlinePause } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 
-interface Props {
-  isPaused: boolean;
-  active: boolean;
+const Footer = (props: {
   handleStart: () => void;
   handleReset: () => void;
   handlePause: () => void;
@@ -17,20 +15,24 @@ interface Props {
   incrementPointsATeam: () => void;
   decrementsPointsBTeam: () => void;
   incrementPointsBTeam: () => void;
-}
+  isPaused: boolean;
+  active: boolean;
+}) => {
 
-const Footer = ({
-  handleStart,
-  handleReset,
-  handlePause,
-  handleResumen,
-  decrementsPointsATeam,
-  incrementPointsATeam,
-  decrementsPointsBTeam,
-  incrementPointsBTeam,
-  isPaused,
-  active,
-}: Props) => {
+  
+  const {
+    handleStart,
+    handleReset,
+    handlePause,
+    handleResumen,
+    decrementsPointsATeam,
+    incrementPointsATeam,
+    decrementsPointsBTeam,
+    incrementPointsBTeam,
+    isPaused,
+    active,
+  } = props;
+
   const StartButton = (
     <div className="btn btn-one btn-start" onClick={handleStart}>
       <VscDebugStart className="scale-effect" />

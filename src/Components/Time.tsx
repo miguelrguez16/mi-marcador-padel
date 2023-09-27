@@ -1,12 +1,8 @@
 import React from "react";
 import "../assets/Time.css";
 
-interface Props {
-  timer: number;
-  show: boolean;
-}
-
-const Time = ({ timer, show }: Props) => {
+const Time = (props: { timer: number; show: boolean }) => {
+  const { timer, show } = props;
   return (
     <>
       {!show ? (

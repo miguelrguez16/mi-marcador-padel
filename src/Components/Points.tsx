@@ -4,23 +4,23 @@ import "../assets/Points.css";
 import { POINTS } from "../utils";
 import { BiTennisBall } from "react-icons/bi";
 
-interface Props {
+const Points = (props: {
   pointsTeamA: number;
   pointsTeamB: number;
   ballPossession: boolean;
   incrementPointsATeam: () => void;
   incrementPointsBTeam: () => void;
   changeBallPossession: () => void;
-}
+}) => {
+  const {
+    pointsTeamA,
+    pointsTeamB,
+    ballPossession,
+    incrementPointsATeam,
+    incrementPointsBTeam,
+    changeBallPossession,
+  } = props;
 
-const Points = ({
-  pointsTeamA,
-  pointsTeamB,
-  incrementPointsATeam,
-  incrementPointsBTeam,
-  ballPossession,
-  changeBallPossession,
-}: Props) => {
   let pta = POINTS[pointsTeamA];
   let ptb = POINTS[pointsTeamB];
   return (

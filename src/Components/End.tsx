@@ -3,12 +3,8 @@ import { BiReset } from "react-icons/bi";
 import "../assets/End.css";
 import { END_MATCH } from "../utils";
 
-interface Props {
-  show: boolean;
-  handleReset: () => void;
-}
-
-const End = ({ show, handleReset }: Props) => {
+const End = (props: { show: boolean; handleReset: () => void }) => {
+  const { show, handleReset } = props;
   return (
     <>
       {show ? (

@@ -2,13 +2,8 @@ import React from "react";
 import Sets from "../entities/Sets";
 import "../assets/Scoreboard.css";
 
-interface Props {
-  setOne: Sets;
-  setTwo: Sets;
-  setThree: Sets;
-}
-
-function Scoreboard({ setOne, setTwo, setThree }: Props) {
+function Scoreboard(props: { setOne: Sets; setTwo: Sets; setThree: Sets }) {
+  const { setOne, setTwo, setThree } = props;
   return (
     <div className="sets-container">
       <h1 className="title-sets">SCOREBOARD</h1>
