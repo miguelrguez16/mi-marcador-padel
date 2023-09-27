@@ -128,7 +128,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="main-layout">
+      <div className="main-layout" id="mainApp">
         <End show={finish} handleReset={handleReset} />
         <Sets
           setOne={match.setOne}
