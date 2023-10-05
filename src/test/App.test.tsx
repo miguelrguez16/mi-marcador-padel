@@ -1,5 +1,6 @@
 import React from "react";
 import App from "../App";
+import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 
 describe("REnder Component App init", () => {
@@ -7,6 +8,6 @@ describe("REnder Component App init", () => {
     render(<App />);
     // eslint-disable-next-line testing-library/no-node-access
     const main = document.getElementById("mainApp");
-    expect(main).toBeDefined();
+    expect(main).toBeInTheDocument();
   });
 });

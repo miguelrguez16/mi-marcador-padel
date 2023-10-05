@@ -26,8 +26,11 @@ const Points = (props: {
   return (
     <>
       <h2 className="titulo-puntos">Points</h2>
-      <div className="container-puntos">
-        <span className="point-team-a" onClick={incrementPointsATeam}>
+      <div id="container-puntos" className="container-puntos">
+        <span
+          className="point-team-a"
+          onClick={incrementPointsATeam}
+          role="contentinfo">
           {pta}
         </span>
         <span className="rotate-hor-center"> vs </span>
@@ -41,12 +44,12 @@ const Points = (props: {
         <span className="name-team-b">Team 2</span>
       </div>
       <div className="container-puntos nombres-equipos">
-        <div onClick={changeBallPossession} className="tennis-ball">
+        <button onClick={changeBallPossession} className="tennis-ball">
           {ballPossession ? <BiTennisBall /> : <></>}
-        </div>
-        <div onClick={changeBallPossession} className="tennis-ball">
+        </button>
+        <button onClick={changeBallPossession} className="tennis-ball">
           {!ballPossession ? <BiTennisBall /> : <></>}
-        </div>
+        </button>
       </div>
     </>
   );
