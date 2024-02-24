@@ -1,0 +1,91 @@
+/* Pantalla grande*/
+@media screen and (min-width: 1180px) {
+    .main-layout {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+        height: 80vh;
+    }
+}
+
+
+/* Movil */
+@media screen and (max-width: 500px) {
+    .main-layout {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.relleno {
+    padding: 20px;
+}
+
+
+.footer-layout {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    border-color: bisque;
+    padding-bottom: 10px;
+}
+
+body {
+    padding: 0;
+    background: linear-gradient(90deg, #0A2751 0%, #2B7335 100%);
+    color: white;
+    margin: 20px;
+    font-size: 1.5em;
+    /* font-family: Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 440px;
+}
+
+span {
+    font-size: 1.4em;
+}
+
+.ateam,
+.point-team-a,
+.name-team-a {
+    color: darkturquoise;
+}
+
+.bteam,
+.point-team-b,
+.name-team-b {
+    color: rgb(21, 245, 62);
+}
+
+.tennis-ball {
+    border: none;
+    background-color: inherit;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    color: rgb(119, 178, 85);
+}
+
+.tennis-ball svg {
+    width: 30px;
+    height: 30px;
+}

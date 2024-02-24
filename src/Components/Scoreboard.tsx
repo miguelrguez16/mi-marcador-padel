@@ -1,8 +1,11 @@
 import React from "react";
-import Sets from "../entities/Sets";
-import "../assets/Scoreboard.css";
+import Sets from "@/entities/Sets";
 
-function Scoreboard(props: { setOne: Sets; setTwo: Sets; setThree: Sets }) {
+export const Scoreboard = (props: {
+  setOne: Sets;
+  setTwo: Sets;
+  setThree: Sets;
+}) => {
   const { setOne, setTwo, setThree } = props;
   return (
     <div className="sets-container">
@@ -33,6 +36,4 @@ function Scoreboard(props: { setOne: Sets; setTwo: Sets; setThree: Sets }) {
       </div>
     </div>
   );
-}
-
-export default Scoreboard;
+};

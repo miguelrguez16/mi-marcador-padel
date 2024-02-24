@@ -1,9 +1,8 @@
 import React from "react";
 import { BiReset } from "react-icons/bi";
-import "../assets/End.css";
-import { END_MATCH } from "../utils";
+import { END_MATCH } from "@/utils";
 
-const End = (props: { show: boolean; handleReset: () => void }) => {
+export const End = (props: { show: boolean; handleReset: () => void }) => {
   const { show, handleReset } = props;
   return (
     <>
@@ -20,5 +19,3 @@ const End = (props: { show: boolean; handleReset: () => void }) => {
     </>
   );
 };
-
-export default End;

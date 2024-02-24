@@ -1,12 +1,11 @@
 import React from "react";
-import "../assets/Footer.css";
 import { VscDebugStart } from "react-icons/vsc";
 import { RxReset } from "react-icons/rx";
 import { AiOutlinePause } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 
-const Footer = (props: {
+export const Footer = (props: {
   handleStart: () => void;
   handleReset: () => void;
   handlePause: () => void;
@@ -18,8 +17,6 @@ const Footer = (props: {
   isPaused: boolean;
   active: boolean;
 }) => {
-
-  
   const {
     handleStart,
     handleReset,
@@ -80,5 +77,3 @@ const Footer = (props: {
     </>
   );
 };
-
-export default Footer;

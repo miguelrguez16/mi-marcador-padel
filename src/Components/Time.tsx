@@ -1,7 +1,6 @@
 import React from "react";
-import "../assets/Time.css";
 
-const Time = (props: { timer: number; show: boolean }) => {
+export const Time = (props: { timer: number; show: boolean }) => {
   const { timer, show } = props;
   return (
     <>
@@ -23,5 +22,3 @@ const Time = (props: { timer: number; show: boolean }) => {
     </>
   );
 };
-
-export default Time;

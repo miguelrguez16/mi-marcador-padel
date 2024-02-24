@@ -1,10 +1,9 @@
 import React from "react";
-import "../assets/Points.css";
 
 import { POINTS } from "../utils";
 import { BiTennisBall } from "react-icons/bi";
 
-const Points = (props: {
+export const Points = (props: {
   pointsTeamA: number;
   pointsTeamB: number;
   ballPossession: boolean;
@@ -54,5 +53,3 @@ const Points = (props: {
     </>
   );
 };
-
-export default Points;
