@@ -1,0 +1,19 @@
+.end-match {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 18vh;
+}
+
+.end-match span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.biReset {
+    height: 10vh;
+    font-size: 2rem;
+    color: red;
+}

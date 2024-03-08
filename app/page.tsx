@@ -1,95 +1,167 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import "./components/Styles/Global.css";
+import React from "react";
+import { End } from "./components/End";
+import { Scoreboard } from "./components/Scoreboard";
+import { Points } from "./components/Points";
+import Match from "./components/Match";
+import { Time } from "./components/Time";
+import { Footer } from "./components/Footer";
+import Head from "next/head";
 
 export default function Home() {
+  // TIMER VALUES
+  let [tiempo, setTiempo] = React.useState(0);
+  const interval = React.useRef<number | null>(null);
+
+  // TIMER CONTROL
+  let [isActive, setIsActive] = React.useState(false);
+  let [isPaused, setIsPaused] = React.useState(true);
+
+  // Puntos
+  let [pointsTeamA, setPointsTeamA] = React.useState(0);
+  let [pointsTeamB, setPointsTeamB] = React.useState(0);
+
+  // BALL POSSESSION
+  let [ballPossession, setBallPossession] = React.useState(true);
+  const handleBallPossessionOnMatch = (e: boolean) => {
+    setBallPossession(e);
+  };
+
+  const [finish, setFinish] = React.useState(false);
+  const handleMatchFinished = (e: boolean) => {
+    setFinish(e);
+  };
+
+  const [match] = React.useState(
+    new Match(handleBallPossessionOnMatch, handleMatchFinished)
+  );
+
+  const handleStart = React.useCallback(() => {
+    setIsActive(true);
+    setIsPaused(false);
+  }, []);
+
+  const handlePause = React.useCallback(() => {
+    setIsPaused(true);
+    setIsActive(true);
+  }, []);
+
+  const handleResumen = React.useCallback(() => {
+    setIsPaused(false);
+    setIsActive(true);
+  }, []);
+
+  const handleReset = React.useCallback(() => {
+    match.clear();
+    setIsActive(false);
+    setFinish(false);
+    setTiempo(0);
+    setPointsTeamA(0);
+    setPointsTeamB(0);
+  }, [match]);
+
+  const handleBallPossession = React.useCallback(() => {
+    setBallPossession((possession) => !possession);
+  }, []);
+
+  // Points
+  const incrementPointsATeam = () => {
+    let currentPointA = pointsTeamA;
+    if (currentPointA < 3) {
+      setPointsTeamA(currentPointA + 1);
+    } else {
+      match.incrementSet(0);
+      setPointsTeamA(0);
+      setPointsTeamB(0);
+    }
+  };
+
+  const incrementPointsBTeam = () => {
+    let currentPointB: number = pointsTeamB;
+    if (currentPointB < 3) {
+      setPointsTeamB(currentPointB + 1);
+    } else {
+      match.incrementSet(1);
+      setPointsTeamA(0);
+      setPointsTeamB(0);
+    }
+  };
+
+  const decrementsPointsATeam = () => {
+    let currentPointA: number = pointsTeamA;
+    if (currentPointA > 0) {
+      setPointsTeamA(currentPointA - 1);
+    }
+  };
+
+  const decrementsPointsBTeam = () => {
+    let currentPointB: number = pointsTeamB;
+    if (currentPointB > 0) {
+      setPointsTeamB(currentPointB - 1);
+    }
+  };
+
+  React.useEffect(() => {
+    match.setBallPossession(ballPossession);
+
+    if (isActive && !isPaused) {
+      interval.current = window.setInterval(() => {
+        setTiempo((t) => t + 10);
+      }, 10);
+    } else {
+      clearInterval(interval.current!);
+    }
+    return () => {
+      clearInterval(interval.current!);
+    };
+  }, [isActive, isPaused, ballPossession, match, finish]);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+      <Head>
+        <title>Marcador Padel</title>
+        <meta property="og:title" content="Marcador Padel" key="title" />
+        <meta
+          property="description"
+          content="Marcador para registro de padel"
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </Head>
+      <main>
+        <div className="App">
+          <div className="main-layout" id="mainApp">
+            <End show={finish} handleReset={handleReset} />
+            <Scoreboard
+              setOne={match.setOne}
+              setTwo={match.setTwo}
+              setThree={match.setThree}
+            />
+            <Points
+              pointsTeamA={pointsTeamA}
+              pointsTeamB={pointsTeamB}
+              incrementPointsATeam={incrementPointsATeam}
+              incrementPointsBTeam={incrementPointsBTeam}
+              ballPossession={ballPossession}
+              changeBallPossession={handleBallPossession}
+            />
+            <Time timer={tiempo} show={finish} />
+          </div>
+          <div className="footer-layout">
+            <Footer
+              active={isActive}
+              isPaused={isPaused}
+              handleReset={handleReset}
+              handleStart={handleStart}
+              handleResumen={handleResumen}
+              handlePause={handlePause}
+              incrementPointsATeam={incrementPointsATeam}
+              incrementPointsBTeam={incrementPointsBTeam}
+              decrementsPointsATeam={decrementsPointsATeam}
+              decrementsPointsBTeam={decrementsPointsBTeam}
+            />
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
