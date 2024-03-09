@@ -1,5 +1,3 @@
-"use client";
-
 import "./Styles/Points.css";
 import React from "react";
 import { BiTennisBall } from "react-icons/bi";

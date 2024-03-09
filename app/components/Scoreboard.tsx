@@ -1,5 +1,3 @@
-"use client";
-
 import "./Styles/Scoreboard.css";
 import React from "react";
 import Sets from "./Sets";

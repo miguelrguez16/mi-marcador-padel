@@ -1,5 +1,3 @@
-"use client";
-
 import "./Styles/End.css";
 import { BiReset } from "react-icons/bi";
 import { END_MATCH } from "./utils";

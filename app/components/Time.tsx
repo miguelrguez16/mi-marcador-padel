@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import "./Styles/Time.css";
 export const Time = (props: { timer: number; show: boolean }) => {

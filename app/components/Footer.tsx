@@ -1,5 +1,3 @@
-"use client";
-
 import "./Styles/Footer.css";
 import React from "react";
 import { VscDebugStart } from "react-icons/vsc";
