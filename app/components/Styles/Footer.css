@@ -5,15 +5,14 @@
     align-content: center;
     justify-content: center;
     align-items: center;
-    font-size: 1.1em;
     gap: 10px;
 }
 
 .parte-ateam {
     width: 33%;
     display: flex;
-    justify-content: center;
     justify-content: space-around;
+    color: var(--green-color);
 }
 
 .parte-central {
@@ -27,6 +26,7 @@
     display: flex;
     justify-content: center;
     justify-content: space-around;
+    color: var(--red-color);
 }
 
 .scale-effect:hover {

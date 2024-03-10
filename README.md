@@ -15,4 +15,4 @@ JUST CLICK [HERE](https://miguelrguez16.github.io/mi-marcador-padel/)
 
 ## DOCUMENTATION
 
-NOW is built with Next JS
+- [NEXT JS DOCS](https://nextjs.org/docs)

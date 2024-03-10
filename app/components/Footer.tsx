@@ -57,16 +57,24 @@ export const Footer = (props: {
 
   const ActiveButtons = (
     <div className="btn-grp">
-      <>{active ? ResetButton : <></>}</>
-      <>{isPaused ? ResumeButton : StopButton}</>
+      <>{active && ResetButton}</>
+      <>{isPaused && ResumeButton}</>
     </div>
   );
 
   return (
     <>
       <div className="parte-ateam ateam">
-        <BiMinus onClick={decrementsPointsATeam} className="scale-effect" />
-        <BsPlusLg onClick={incrementPointsATeam} className="scale-effect" />
+        <BiMinus
+          onClick={decrementsPointsATeam}
+          className="scale-effect"
+          color="green"
+        />
+        <BsPlusLg
+          color="green"
+          onClick={incrementPointsATeam}
+          className="scale-effect"
+        />
       </div>
       <div className="parte-central">
         <>{active ? ActiveButtons : StartButton}</>

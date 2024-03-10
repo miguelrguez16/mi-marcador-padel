@@ -10,33 +10,26 @@ import { Time } from "./components/Time";
 import { Footer } from "./components/Footer";
 import Head from "next/head";
 
+import { Abril_Fatface } from "next/font/google";
+const abel = Abril_Fatface({ subsets: ["latin"], weight: ["400"] });
+
 export default function Home() {
-  // TIMER VALUES
-  let [tiempo, setTiempo] = React.useState(0);
+  const [tiempo, setTiempo] = React.useState(0);
+  const [finish, setFinish] = React.useState(false);
+  const [pointsTeamA, setPointsTeamA] = React.useState(0);
+  const [pointsTeamB, setPointsTeamB] = React.useState(0);
+  const [isActive, setIsActive] = React.useState(false);
+  const [isPaused, setIsPaused] = React.useState(true);
   const interval = React.useRef<number | null>(null);
+  const [ballPossession, setBallPossession] = React.useState(true);
 
-  // TIMER CONTROL
-  let [isActive, setIsActive] = React.useState(false);
-  let [isPaused, setIsPaused] = React.useState(true);
-
-  // Puntos
-  let [pointsTeamA, setPointsTeamA] = React.useState(0);
-  let [pointsTeamB, setPointsTeamB] = React.useState(0);
-
-  // BALL POSSESSION
-  let [ballPossession, setBallPossession] = React.useState(true);
   const handleBallPossessionOnMatch = (e: boolean) => {
     setBallPossession(e);
   };
 
-  const [finish, setFinish] = React.useState(false);
   const handleMatchFinished = (e: boolean) => {
     setFinish(e);
   };
-
-  const [match] = React.useState(
-    new Match(handleBallPossessionOnMatch, handleMatchFinished)
-  );
 
   const handleStart = React.useCallback(() => {
     setIsActive(true);
@@ -52,6 +45,10 @@ export default function Home() {
     setIsPaused(false);
     setIsActive(true);
   }, []);
+
+  const [match] = React.useState(
+    new Match(handleBallPossessionOnMatch, handleMatchFinished)
+  );
 
   const handleReset = React.useCallback(() => {
     match.clear();
@@ -117,6 +114,7 @@ export default function Home() {
       clearInterval(interval.current!);
     };
   }, [isActive, isPaused, ballPossession, match, finish]);
+
   return (
     <>
       <Head>
@@ -127,15 +125,26 @@ export default function Home() {
           content="Marcador para registro de padel"
         />
       </Head>
-      <main>
-        <div className="App">
-          <div className="main-layout" id="mainApp">
+      <div className="App">
+        <section className="container-title">
+          <h1
+            style={{
+              fontFamily: abel.className,
+              textTransform: "uppercase",
+            }}>
+            Marcador de Padel
+          </h1>
+        </section>
+        <section className="layout">
+          <div className="header">
             <End show={finish} handleReset={handleReset} />
             <Scoreboard
               setOne={match.setOne}
               setTwo={match.setTwo}
               setThree={match.setThree}
             />
+          </div>
+          <div className="main">
             <Points
               pointsTeamA={pointsTeamA}
               pointsTeamB={pointsTeamB}
@@ -146,7 +155,7 @@ export default function Home() {
             />
             <Time timer={tiempo} show={finish} />
           </div>
-          <div className="footer-layout">
+          <div className="footer">
             <Footer
               active={isActive}
               isPaused={isPaused}
@@ -160,8 +169,8 @@ export default function Home() {
               decrementsPointsBTeam={decrementsPointsBTeam}
             />
           </div>
-        </div>
-      </main>
+        </section>
+      </div>
     </>
   );
 }
