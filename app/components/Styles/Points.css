@@ -1,3 +1,9 @@
+.container-title {
+    display: flex;
+    justify-content: center;
+}
+
+
 .container-puntos {
     display: flex;
     flex-direction: row;
@@ -9,7 +15,6 @@
 
 .titulo-puntos {
     text-align: center;
-    font-size: 2rem;
     margin: 0;
 }
 

@@ -24,30 +24,33 @@ export const Points = (props: {
   let ptb = POINTS[pointsTeamB];
   return (
     <>
-      <h2 className="titulo-puntos">Points</h2>
+      <section className="container-title">
+        <span className="titulo-puntos">Puntos</span>
+      </section>
       <div id="container-puntos" className="container-puntos">
         <span
-          className="point-team-a"
+          className="point-team-a rotate-hor-center"
           onClick={incrementPointsATeam}
           role="contentinfo">
           {pta}
         </span>
-        <span className="rotate-hor-center"> vs </span>
-        <span className="point-team-b" onClick={incrementPointsBTeam}>
+        <span>vs</span>
+        <span
+          className="point-team-b rotate-hor-center"
+          onClick={incrementPointsBTeam}>
           {ptb}
         </span>
       </div>
-
       <div className="container-puntos nombres-equipos">
-        <span className="name-team-a">Team 1</span>
-        <span className="name-team-b">Team 2</span>
+        <span className="name-team-a">Equipo 1</span>
+        <span className="name-team-b">Equipo 2</span>
       </div>
       <div className="container-puntos nombres-equipos">
         <button onClick={changeBallPossession} className="tennis-ball">
-          {ballPossession ? <BiTennisBall /> : <></>}
+          {ballPossession && <BiTennisBall />}
         </button>
         <button onClick={changeBallPossession} className="tennis-ball">
-          {!ballPossession ? <BiTennisBall /> : <></>}
+          {!ballPossession && <BiTennisBall />}
         </button>
       </div>
     </>
