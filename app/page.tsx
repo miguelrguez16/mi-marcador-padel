@@ -10,6 +10,9 @@ import { Time } from "./components/Time";
 import { Footer } from "./components/Footer";
 import Head from "next/head";
 
+import { Abril_Fatface } from "next/font/google";
+const abel = Abril_Fatface({ subsets: ["latin"], weight: ["400"] });
+
 export default function Home() {
   const [tiempo, setTiempo] = React.useState(0);
   const [finish, setFinish] = React.useState(false);
@@ -123,6 +126,15 @@ export default function Home() {
         />
       </Head>
       <div className="App">
+        <section className="container-title">
+          <h1
+            style={{
+              fontFamily: abel.className,
+              textTransform: "uppercase",
+            }}>
+            Marcador de Padel
+          </h1>
+        </section>
         <section className="layout">
           <div className="header">
             <End show={finish} handleReset={handleReset} />
