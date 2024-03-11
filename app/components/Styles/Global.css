@@ -1,5 +1,5 @@
  .App {
-     background: linear-gradient(rgb(10, 39, 79), rgb(40, 109, 54));
+     background: linear-gradient(to right, rgb(10, 39, 79), rgb(40, 109, 54));
      height: 100vh;
  }
 
@@ -36,8 +36,7 @@
      align-content: center;
      justify-content: center;
      align-items: center;
-     height: 10vh;
-     bottom: 0;
+
  }
 
  .footer-layout {
@@ -89,5 +88,43 @@
  }
 
  span {
-     color: white
+     color: white;
+ }
+
+ .ateam,
+ .point-team-a,
+ .name-team-a {
+     color: var(--green-color)
+ }
+
+ .bteam,
+ .point-team-b,
+ .name-team-b {
+     color: var(--blue-color)
+ }
+
+ .tennis-ball {
+     border: none;
+     background-color: inherit;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-wrap: nowrap;
+     flex-direction: column;
+ }
+
+ .tennis-ball>svg {
+     color: rgb(119, 178, 85);
+ }
+
+ .tennis-ball>svg:hover {
+     transform: scale(1.5) rotate(20deg);
+     transition-duration: 1s;
+ }
+
+ .tennis-ball svg {
+     width: 30px;
+     height: 30px;
+
  }
