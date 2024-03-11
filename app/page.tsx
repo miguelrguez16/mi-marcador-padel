@@ -126,15 +126,7 @@ export default function Home() {
         />
       </Head>
       <div className="App">
-        <section className="container-title">
-          <h1
-            style={{
-              fontFamily: abel.className,
-              textTransform: "uppercase",
-            }}>
-            Marcador de Padel
-          </h1>
-        </section>
+        <section className="container-title"></section>
         <section className="layout">
           <div className="header">
             <End show={finish} handleReset={handleReset} />

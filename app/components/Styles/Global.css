@@ -1,9 +1,15 @@
+ .App {
+     background: linear-gradient(rgb(10, 39, 79), rgb(40, 109, 54));
+     height: 100vh;
+ }
+
  .layout {
      display: flex;
      width: 100%;
-     height: 100vh;
      flex-direction: column;
-     justify-content: space-evenly
+     flex-wrap: nowrap;
+     height: 100vh;
+     justify-content: space-evenly;
  }
 
  .container-title {
@@ -23,17 +29,18 @@
  }
 
  .footer {
+     width: 100%;
      display: flex;
      flex-direction: row;
      flex-wrap: nowrap;
      align-content: center;
      justify-content: center;
      align-items: center;
-     height: 10vh
+     height: 10vh;
+     bottom: 0;
  }
 
  .footer-layout {
-     position: fixed;
      width: 100%;
      display: flex;
      flex-direction: row;
@@ -53,7 +60,7 @@
  .bteam,
  .point-team-b,
  .name-team-b {
-     color: var(--red-color)
+     color: var(--blue-color)
  }
 
  .tennis-ball {
@@ -79,4 +86,8 @@
  .tennis-ball svg {
      width: 30px;
      height: 30px;
+ }
+
+ span {
+     color: white
  }
